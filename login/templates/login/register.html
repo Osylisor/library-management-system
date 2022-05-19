@@ -1,0 +1,31 @@
+
+
+{% extends "login/base.html" %}
+
+
+{% block title %} Register {% endblock %}
+
+{% load static %}
+
+{% block content %}
+
+<h1 align = "center">Registration Page</h1>
+
+<div class="container-center">
+   
+    <div class="image-contianer">
+        <a href="/admin register/">
+            <img src="{% static 'images/Admin User.png' %}" width="230px" height="230px">
+            <p align = "center">Register as Admin</p>
+        </a>
+
+        <a href="/student register/">
+            <img src="{% static 'images/User.jpg' %}">
+            <p  align = "center" >Register as Student</p>
+        </a>
+    </div>
+    
+</div>
+
+
+{% endblock %}

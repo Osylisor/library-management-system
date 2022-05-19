@@ -1,0 +1,35 @@
+{% extends "main/base.html" %}
+
+
+{% block title %}Update Profile{% endblock %}
+
+{% load static %}
+
+{% block content %}
+
+    <h1 align = "center">Update Profile</h1>
+
+    <div class="container-center">
+       
+
+        <form method="post" enctype="multipart/form-data" class="main-form">
+            {% csrf_token %}
+
+            
+            {% if user.profile_picture %}
+                <img src="{{ user.profile_picture.url }}" >
+            {% else %}
+                <img src="{% static 'img/profile pic.jpg'%}">
+            {% endif %}
+            <br>
+            <br>
+            <label for="file">Upload Image</label>
+            <br>
+            <input type="file" name="file" id="file">
+            <br>
+            <input type="submit" value="Update">
+        </form>
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "main/base.html" %}
+
+
+{% block title %} Available Books {% endblock %}
+
+
+{% block content %}
+
+    <h1 align = "center"> Available Books</h1>
+
+    <div class="container-center">
+
+        <div class="table-list">
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>ISBN</th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for book in books %}
+                            <tr>
+                                <td>{{ book.title }}</td>
+                                <td>{{ book.author }}</td>
+                                <td>{{ book.isb_number }}</td>
+                                <td>
+                                    <a href="/remove-book/{{ book.id }}">Remove</a>
+                                </td>
+                            </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+        </div>
+
+    </div>
+
+ 
+    
+
+{% endblock %}

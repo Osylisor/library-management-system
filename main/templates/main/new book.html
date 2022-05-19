@@ -1,0 +1,32 @@
+{% extends "main/base.html" %}
+
+
+{% block title %}New Book{% endblock %}
+
+
+{% block content %}
+
+    <h1 align = "center">Add Book</h1>
+    <div class="container-center">
+
+        <form method="post" class = "main-form">
+
+            {% csrf_token %}
+            
+            <label for="title">Title</label>
+            <input type="text" name="title" id="title">
+
+            <label for="author">Author</label>
+            <input type="text" name="author" id="author">
+
+            <label for="isbn">ISBN</label>
+            <input type="text" name="isbn" id="isbn">
+
+            <input type="submit" value="Add">
+
+            <a href = "/available books/">View all the books.</a>
+        </form>
+
+    </div>
+
+{% endblock %}

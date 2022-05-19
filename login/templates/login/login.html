@@ -1,0 +1,40 @@
+{% extends "login/base.html" %}
+
+
+{% block title %} Login {% endblock %}
+
+
+{% block content %}
+
+
+    <h1 align = "center">Login Page</h1>
+
+    <div class="container-center">
+        <form action="" method="post" class = "login-form">
+
+            {% csrf_token %}
+            
+            <!--Email field-->
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="Enter Email">
+
+            <!--Password field-->
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" placeholder="Enter Password">
+
+
+
+            <!--Submit Button-->
+            <input type="submit" value="Login">
+    
+            
+                <p>No Student Account? <a href="/student register/">Register Here</a></p>
+           
+                <p>No Admin Account? <a href="/admin register/">Register Here</a></p>
+    
+        </form>
+        
+    </div>
+ 
+
+{% endblock %}

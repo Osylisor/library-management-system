@@ -1,0 +1,144 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/main styles.css' %}">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body> 
+
+
+    {% if not user.is_admin %}
+    <div class="profile-pic">
+
+        {% if user.profile_picture %}
+            <a href="/update profile/"><img src="{{ user.profile_picture.url }}"></a>
+        {% else %}
+            <a href="/update profile/"><img src="{% static 'img/profile pic.jpg' %}"></a>
+        {% endif %}
+    </div>
+    {% endif %}
+
+
+    <div class= "hamburger-btn">
+        <span class = "bar"></span>
+        <span class = "bar"></span>
+        <span class = "bar"></span>
+    </div>
+
+    <!--Start working on the templates for the main application-->
+    <div class="main-container">
+
+        <div class="menu-bar">
+            
+            <div class="header">
+                <h1>Menu</h1>
+                <span class = "close">&times;</span>
+            </div>
+            
+
+            <ul>
+                {% if not user.is_admin %}
+                    <li><a href="/home/">Home</a></li>
+                    <li><a href="/view books/">Issued Books</a></li>
+                    <li><a href="/update profile/">Edit Profile</a></li>
+                    <li><a href="/logout/">Logout </a></li>
+                {% else %}
+                    <li><a href="/home/">Home</a></li>
+                    <li><a href="/issue book/">Issue Book</a></li>
+                    <li><a href="/new book/">Add Book</a></li>
+                    <li><a href="/logout/">Logout </a></li>
+                {% endif %}
+            </ul>
+
+        </div>
+
+        <div class="main-section">
+
+            <div class="nav">
+                <div class="logo">LMS</div>
+            </div>
+
+        
+                
+            <div class="main-body">
+
+                {% if messages %}
+
+                    {% for message in messages %}
+            
+                        {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                            <div class="success-alert">
+                                <p>{{message }}</p>
+                                <div onclick="this.parentElement.remove();" class ="close-btn">&times;</div>
+                            </div>
+                        {% else %}
+            
+                            <div class="error-alert">
+                                <p>{{message }}</p>
+                                <div onclick="this.parentElement.remove();" class ="close-btn">&times;</div>
+                            </div>
+                        {% endif %}
+            
+                    {% endfor %}
+
+                {% endif %}
+
+                {% block content %}
+
+                {% endblock %}
+
+            </div>
+            
+        </div>
+
+
+    </div>
+
+    <script>
+        let hamburgerButton = document.querySelector('.hamburger-btn');
+        let menuBar = document.querySelector('.menu-bar')
+        
+
+        hamburgerButton.addEventListener('click', () =>{
+            console.log('Clicked!');
+            menuBar.style.width = "400px";
+            hamburgerButton.style.zIndex = "0";
+           
+        });
+
+        window.addEventListener('resize', () =>{
+          if(window.innerWidth < 800){
+             menuBar.style.width = "0";
+             document.querySelector('.close').style.display = "block";
+          }else{
+             menuBar.style.width = "350px";
+             hamburgerButton.style.zIndex = "2";
+             document.querySelector('.close').style.display = "none";
+          }
+        });
+
+        document.querySelector('.close').addEventListener('click', () =>{
+            hamburgerButton.style.zIndex = "2";
+            menuBar.style.width = "0";
+        });
+
+        window.addEventListener('load',()=>{
+            if(window.innerWidth < 800){
+                menuBar.style.width = "0";
+                document.querySelector('.close').style.display = "block";
+            }else{
+                menuBar.style.width = "350px";
+                hamburgerButton.style.zIndex = "2";
+                document.querySelector('.close').style.display = "none";
+          }
+        });
+
+    </script>
+    
+</body>
+</html>

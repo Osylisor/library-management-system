@@ -1,0 +1,60 @@
+
+
+{% extends "login/base.html" %}
+
+
+{% block title %} Student Registration {% endblock %}
+
+
+
+{% block content %}
+
+<h1 align = "center">Register As Student </h1>
+
+
+
+
+ 
+
+
+    <div class="container-center">
+
+        <form method="post" class = "login-form">
+
+            {% csrf_token %}
+
+            
+            <!--Name field-->
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" placeholder="Enter Name">
+
+            <!--Surname field-->
+            <label for="surname">Surname</label>
+            <input type="text" name="surname" id="surname" placeholder="Enter Surname">
+
+            <!--Student Number field-->
+            <label for="student_number">Student Number</label>
+            <input type="text" name="student_number" id="student_number" placeholder="Enter Student Number">
+
+            <!--Email field-->
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="Enter Email">
+
+            <!--Password field-->
+            <label for="password1">Password</label>
+            <input type="password" name="password1" id="password1" placeholder="Enter Password">
+
+            <!--Password field(comfirm)-->
+            <label for="password2">Comfirm Password</label>
+            <input type="password" name="password2" id="password2" placeholder="Comfirm Password">
+
+            <input type="submit" value="Register">
+        </form>
+    </div>
+
+    
+
+
+
+
+{% endblock %}

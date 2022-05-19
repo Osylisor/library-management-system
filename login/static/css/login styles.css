@@ -1,0 +1,221 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(255, 255, 255);
+}
+
+.container-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.2rem 1rem;
+}
+
+.login-form{
+
+    width: 500px;
+    height: 650px;
+    padding: 1.2rem 1rem;
+
+}
+
+.login-form input[type = "email"],
+.login-form input[type = "password"],
+.login-form input[type = "text"]{
+
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 0.7rem;
+    padding: 1.1rem;
+    font-size: 1.1rem;
+    text-align: center;
+    border-radius: 5px;
+    outline: none;
+}
+
+.login-form input[type = "submit"]{
+    width:100px;
+    margin-top: 1.2rem;
+    padding: 1.2rem;
+    color:white;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: purple;
+    cursor: pointer;
+    transition: all .5s;
+}
+
+.login-form input[type = "submit"]:hover{
+    background-color: rgb(165, 8, 165);
+    width: 150px;
+   
+}
+
+.login-form label,
+.login-form p{
+    color: black;
+    font-size: 1.2rem;
+}
+
+a{
+    color:purple;
+    text-decoration: none;
+}
+
+.nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    
+    
+}
+
+.nav .logo{
+   
+    color:purple;
+    font-size: 2.4rem;
+}
+
+.nav .nav-items{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+    padding-left: 1.1rem;
+}
+
+.nav .nav-items li a{
+    color:rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 1.3rem;
+    transition: all .5s;
+}
+
+.nav .nav-items li a:hover{
+    color:purple;
+    font-size: 1.4rem;
+}
+
+.image-contianer{
+
+    display: flex;
+    justify-content: space-around;
+    width: 750px;
+    align-items: center;
+    margin: 1.2rem;
+    padding: 1.2rem;
+}
+
+.image-contianer a{
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    padding-left: 1.2rem;
+    margin-top: 1.2rem;
+    transition: all .5s;
+    width: 240px;
+    height: 350px;
+}
+
+.image-contianer a p{
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.image-contianer a:hover{
+    transform: scale(1.1);
+}
+
+.success-alert{
+    display: flex;
+    justify-content: space-around;
+    color:white;
+    font-size: 1.3rem;
+    align-items: center;
+    width: 100%;
+    height: 45px;
+    padding: 1.1rem 0.6rem;
+    margin: 0;
+    background-color: palegreen;
+}
+
+.error-alert{
+    display: flex;
+    justify-content: space-around;
+    color:white;
+    font-size: 1.3rem;
+    align-items: center;
+    width: 100%;
+    height: 45px;
+    padding: 1.1rem 0.6rem;
+    margin: 0;
+    background-color: rgb(251, 152, 152);
+}
+
+.close-btn{
+    color:white;
+    transition: all .5s;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.hamburger-btn{
+    display:none;
+    position: absolute;
+    top:0.6rem;
+    right:3.3rem;
+    justify-content: space-around;
+    align-items: center;
+    width: 65px;
+    height: 55px;
+    flex-direction: column;
+    cursor: pointer;
+    
+}
+
+.hamburger-btn .bar{
+   
+    width: 70%;
+    height: 6px;
+    background-color: purple;
+    
+}
+
+@media (max-width: 800px){
+
+    .hamburger-btn{
+        display:flex;
+    }
+
+    .nav .nav-items{
+        display: none;
+        width: 100%;
+        justify-content: space-around;
+        flex-direction: column;
+    }
+
+    .nav {
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .nav .nav-items.active{
+        display: flex;
+    }
+
+    .nav .nav-items li{
+        margin-top: 12px;
+        padding: 12px;
+        text-align: center;
+    }
+
+    .nav .logo{
+        margin-left: 1.3rem;
+    }
+}

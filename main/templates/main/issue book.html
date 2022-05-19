@@ -1,0 +1,65 @@
+{% extends "main/base.html" %}
+
+
+{% block title%} Issue Book {% endblock %}
+
+
+{% block content %}
+
+    <h1 align = "center">Issue Books</h1>
+
+    <div class="container-center">
+
+        <form method="post" class = "main-form">
+
+            {% csrf_token %}
+
+
+            <label for="student-list">Student</label>
+            <select name="studentList" id="student-list">
+                
+                {% if users %}
+
+                    {% for user in users %}
+                        {% if not user.is_admin %}
+                            <option value="{{ user.name}}">
+                                {{user.name}}({{user.student_number}})
+                            </option>
+                        {% endif %}
+                    {% endfor %}
+
+                {% else %}
+                        <option value=""></option>
+                {% endif %}
+            </select>
+
+            <label for="book-list">Book</label>
+            <select name="bookList" id="book-list">
+                
+                {% if books %}
+
+                    {% for book in books %}
+                        <option value="{{ book.title}}">
+                            {{ book.title }}
+                        </option>
+                    {% endfor %}
+                {% else %}
+                    <option value=""></option>
+                {% endif %}
+
+            </select>
+
+
+            <input type="submit" value="Issue">
+            <a href="/view books/">View all issued books</a>
+
+            
+
+        </form>
+       
+        
+    </div>
+
+    
+
+{% endblock %}

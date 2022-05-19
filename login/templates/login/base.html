@@ -1,0 +1,74 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/login styles.css' %}">
+    <title>{% block title %} {% endblock %}</title>
+</head>
+<body>
+
+    <div class="nav">
+
+        <div class="logo">LMS</div>
+
+        <ul class = "nav-items">
+            <li><a href="/">Login</a></li>
+            <li><a href="/register/">Register</a></li>
+        </ul>
+
+    </div>
+
+
+    <div class= "hamburger-btn">
+        <span class = "bar"></span>
+        <span class = "bar"></span>
+        <span class = "bar"></span>
+    </div>
+
+  
+
+    {% if messages %}
+
+        {% for message in messages %}
+
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                <div class="success-alert">
+                    <p>{{message }}</p>
+                    <div onclick="this.parentElement.remove();" class ="close-btn">&times;</div>
+                </div>
+            {% else %}
+
+                 <div class="error-alert">
+                    <p>{{message }}</p>
+                    <div onclick="this.parentElement.remove();" class ="close-btn">&times;</div>
+                </div>
+            {% endif %}
+
+        {% endfor %}
+
+    {% endif %}
+
+
+
+    {% block content %}
+
+    {% endblock %}
+
+    <script>
+
+        let hamburgerButton = document.querySelector('.hamburger-btn')
+        let navItems = document.querySelector('.nav-items');
+
+        hamburgerButton.addEventListener('click', ()=>{
+            navItems.classList.toggle('active');
+        });
+
+    </script>
+
+</body>
+</html>

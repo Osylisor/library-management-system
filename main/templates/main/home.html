@@ -1,0 +1,37 @@
+{% extends "main/base.html" %}
+
+
+{% block title %} Home {% endblock %}
+
+
+{% block content %}
+
+    <h1 align = "center"> Welcome to the LMS {{ user.name}}</h1>
+
+    <div class="container-center">
+
+        <div class="text-container">
+            <p>
+                 {%if not user.is_admin %}
+                 
+                    Welcome {{ user.name }}, we are glad that you could make it to our
+                    library management system. With our new system, you can view all the books that
+                    have been issued to you. You also have the previlege of keeping track of 
+                    fees and due dates. On the left, is the menu for navigating to different 
+                    sections of the application.
+
+                {% else %}
+
+                    Welcome {{ user.name }}, you are one the admins of LMS.
+                    Your role is to issue books to students who login into the 
+                    system. You can also add and remove books to the system whenever
+                    new books are shelved or removed.
+
+                {% endif %}
+            </p>
+        </div>
+
+    </div>
+    
+
+{% endblock %}

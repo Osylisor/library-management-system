@@ -1,0 +1,83 @@
+{% extends "main/base.html" %}
+
+
+{% block title %}Issued Books{% endblock %}
+
+{% load static %}
+
+{% block content %}
+
+    <h1 align = "center">Issued Books</h1>
+
+    <div class="container-center">
+        <div class="table-list">
+            <table>
+
+                <thead>
+                    <tr>
+                        {% if user.is_admin %}
+                            <th>Profile</th>
+                            <th>Student</th>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>ISBN</th>
+                            <th></th>
+
+                        {% else %}
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>ISBN</th>
+                        {% endif %}
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for book in books %}
+                        
+                        {% if book.is_issued %}
+
+                            {% if user.is_admin %}
+                                <tr>
+                                    <td>
+                                        <div class="student-pic">
+                                            {% if book.user.profile_picture %}
+                                                <img src="{{ book.user.profile_picture.url }}">
+                                            {% else %}
+                                                <img src="{% static 'img/profile pic.jpg' %}">
+                                            {% endif %}
+                                        </div>
+                                    </td>
+                                    <td>{{ book.user.name }}({{ book.user.student_number}})</td>
+                                    <td>{{ book.title }}</td>
+                                    <td>{{ book.author }}</td>
+                                    <td>{{ book.isb_number }}</td>
+                                    <td>
+                                    
+                                       <a href="/remove-issue/{{ book.id }}">Remove</a>
+                                    </td>
+                                </tr>
+                            {% else %}
+
+                                {% if book.user == user %}
+                                    <tr>
+                                        
+                                        <td>{{ book.title }}</td>
+                                        <td>{{ book.author }}</td>
+                                        <td>{{ book.isb_number }}</td>
+                                        
+                                    </tr>
+
+                                {% endif %}
+
+                            {% endif %}
+
+                        {% endif %}
+
+                    {% endfor %}
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
