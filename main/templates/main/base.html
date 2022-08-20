@@ -106,13 +106,13 @@
 
         hamburgerButton.addEventListener('click', () =>{
             console.log('Clicked!');
-            menuBar.style.width = "400px";
+            menuBar.style.width = "300px";
             hamburgerButton.style.zIndex = "0";
            
         });
 
         window.addEventListener('resize', () =>{
-          if(window.innerWidth < 800){
+          if(window.innerWidth < 600){
              menuBar.style.width = "0";
              document.querySelector('.close').style.display = "block";
           }else{
@@ -128,7 +128,7 @@
         });
 
         window.addEventListener('load',()=>{
-            if(window.innerWidth < 800){
+            if(window.innerWidth < 600){
                 menuBar.style.width = "0";
                 document.querySelector('.close').style.display = "block";
             }else{
