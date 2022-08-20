@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-*(8wuy%sx-z1*%p%amx0d=iwwf!k9-5-*%jixxl2=ig%6^#&i#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', 'librarysyt.herokuapp.com']
 AUTH_USER_MODEL = 'login.User'
 
 
